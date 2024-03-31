@@ -4,6 +4,11 @@
 <c:url var="courseNew" value="/course/new" />
 <c:url var="courseFind" value="/course/find" />
 
+<c:url var="logout" value="/logout" />
+
+<sec:authorize access="isAuthenticated()">
+	<a href="${logout}"> Logout </a>
+</sec:authorize>
 
 <h1>Courses</h1>
 <form action="${courseFind}" method="post">
@@ -12,6 +17,7 @@
 			<a class="btn btn-info mx-3" href="${courseNew}">New course</a>
 			<input name="name" size="10" class="mx-3" />
 			<input class="btn btn-info mx-3" type="submit" value="Find" />
+			<sec:csrfInput />
 		</div>
 	</div>
 </form>
